@@ -42,6 +42,30 @@
                             <td>:</td>
                             <td>{{$data->jenis}}</td>
                         </tr>
+                        <tr>
+                            <th>Kategori</th>
+                            <td>:</td>
+                            <td>
+                                @if($data->kategoris && $data->kategoris->count() > 0)
+                                    @foreach($data->kategoris as $kategori)
+                                        <span class="badge bg-secondary">{{ $kategori->nama }}</span>
+                                    @endforeach
+                                @else
+                                    <span class="text-muted">Tidak ada kategori</span>
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Foto</th>
+                            <td>:</td>
+                            <td>
+                                @if($data->foto)
+                                    <img src="{{ asset('storage/' . $data->foto) }}" alt="Foto {{$data->nama}}" style="max-height: 200px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.15); border: 1px solid #ddd; padding: 4px; background-color: #fff;">
+                                @else
+                                    <span class="text-muted">Tidak ada foto</span>
+                                @endif
+                            </td>
+                        </tr>
                     </table>
                     <a class="btn btn-info" href="{{url('master-items/form/edit')}}/{{$data->id}}">Edit</a>
                     <a class="btn btn-danger" href="{{url('master-items/delete')}}/{{$data->id}}" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>

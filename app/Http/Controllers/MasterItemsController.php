@@ -39,7 +39,7 @@ class MasterItemsController extends Controller
             );
         }
 
-        $data_search = $data_search->select('kode', 'nama', 'jenis', 'harga_beli', 'laba', 'supplier')->orderBy('id')->get();
+        $data_search = $data_search->select('id', 'kode', 'nama', 'jenis', 'harga_beli', 'laba', 'supplier', 'foto')->with('kategoris')->orderBy('id')->get();
 
 
         return json_encode([

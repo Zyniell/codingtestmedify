@@ -47,9 +47,7 @@
                             <td>:</td>
                             <td>
                                 @if($data->kategoris && $data->kategoris->count() > 0)
-                                    @foreach($data->kategoris as $kategori)
-                                        <span class="badge bg-secondary">{{ $kategori->nama }}</span>
-                                    @endforeach
+                                    {{ $data->kategoris->pluck('nama')->implode(', ') }}
                                 @else
                                     <span class="text-muted">Tidak ada kategori</span>
                                 @endif
